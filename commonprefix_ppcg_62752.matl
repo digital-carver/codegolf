@@ -1,0 +1,18 @@
+
+%y!=XdYpf)
+
+ y  % implicitly input the two strings, then duplicate the
+    %  first one into the stack again
+    %  stack: ['department' 'deported' 'department']
+ !  % transpose the last string into a column vector
+ =  % broadcast equality check - gives back a matrix comparing
+    %  every letter in first input with the letters in the second
+ Xd % diagonal of the matrix - comparison result of each letter with
+    %  only corresponding letter in the other string
+    %  stack: ['department' [1; 1; 1; 0; 1; 1; 0; 0;]]
+ Yp % cumulative product (so only initial sequence of 1s remains
+    %  1s, others become 0)
+    %  stack: ['department' [1; 1; 1; 0; 0; 0; 0; 0;]]
+ f  %  find the indices of the 1s
+ )  % index at those elements so we get those letters out
+    % (implicit) convert to string and display

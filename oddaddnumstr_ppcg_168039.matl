@@ -1,0 +1,24 @@
+
+%t4Y2m)!Ut1YSof)sE
+
+     % Implicit input
+ t   % duplicate input
+     % stack: ['r5e6o9mm!/3708dvc' 'r5e6o9mm!/3708dvc']
+ 4Y2 % push inbuilt literal, characters '0':'9'
+     % stack: ['r5e6o9mm!/3708dvc' 'r5e6o9mm!/3708dvc' '0123456789']
+ m)  % extract only characters from input that belong to '0':'9'
+     % stack: ['5693708']
+ !U  % transpose and convert each value from string to number
+     % stack: [5 6 9 3 7 0 8]
+ t   % duplicate that
+ 1YS % circular shift by 1
+     % stack: [[5 6 9 3 7 0 8] [8 5 6 9 3 7 0]]
+ o   % parity check - 1 for odd, 0 for even
+     % stack: [[5 6 9 3 7 0 8] [0 1 0 1 1 1 0]]
+ f   % find non-zero value indices in last array
+     % stack: [[5 6 9 3 7 0 8] [2 4 5 6]]
+ )   % index at those places in the first array
+ s   % sum
+ E   % multiply by 2
+     % (implicit) convert to string and display
+

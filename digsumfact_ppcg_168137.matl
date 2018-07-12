@@ -1,0 +1,15 @@
+
+
+
+:p[]&V!Us
+
+% `:p` - factorial.   
+% `[]&V` - string representation of the number, fully expanded (without the `[]&`, larger numbers use the scientific notation which won't do for our purposes).    
+% `!U` transpose and convert back to numbers, getting individual digits.   
+% `s` - sum those digits.  
+% Works up to n=22
+
+
+% I could stretch the input range to 23 with a couple of tricks, but that costs an additional 20 bytes: 
+% :1w5X2Y%"@*t10\~?10/]][]&V!Us
+% (basically, use the `uint64` data type instead of the usual `double`, multiply by each number upto the given number, but divide away 10 whenever our product is divisible by it (since trailing zeros add nothing to the digit sum).)

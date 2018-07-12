@@ -1,0 +1,23 @@
+
+%'ng'98Ztt'y'whw11Y2m)'ykKgGdcCjJ'tfqXEt10<)oP
+
+        % Implicit input (assume 'junyiKonge')
+ 'ng'   % string literal
+ 98     % 'b'
+ Zt     % replace substring with another (stack: 'junyiKobe')
+ t      % duplicate that (stack: 'junyiKobe' 'junyiKobe')
+ 'y'    % string literal
+ w      % swap elements in stack so 'y' goes before input (stack: 'junyiKobe' 'y' 'junyiKobe')
+ h      % horizontal concatenation (prepend 'y' to input string) (stack: 'junyiKobe' 'yjunyiKobe')
+ w      % swap stack (stack: 'yjunyiKobe' 'junyiKobe')
+ 11Y2   % place 'aeiou' in stack (stack: 'yjunyiKobe' 'junyiKobe' 'aeiou')
+ m      % set places with a vowel to True i.e. 1 (stack: 'yjunyiKobe' 0 1 0 1 0 1 0 0 1)
+ )      % index into those places (stack: 'jyKd')
+ 'ykKgGdcCjJ' % string literal
+ tfq    % generate numbers 0 to 9 (stack: 'jyKd' 'ykKgGdcCjJ' 0 1 2 3 4 5 6 7 8 9)
+ XE     % replace elements in first array which are found in second,
+        %  with corresponding elements from third
+ t10<)  % keep only elements that are less than 10 (removes extraneous vowels)
+ o      % convert from string to double (numeric) array (stack: 8 0 2 5)
+ P      % flip the order of elements (stack: 5 2 0 8)
+        % (implicit) convert to string and display

@@ -1,0 +1,10 @@
+
+
+0w"@+@*t]x
+% The obvious "accumulate y(x+y) over the array" approach. 
+
+
+% n:G~f!-tO<YYw(X<
+% Longer, more matrix-y approach: get the overall index, broadcast-subtract the indices of all zeros, and take the difference from the index of the nearest zero.  
+
+

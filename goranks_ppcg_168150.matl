@@ -1,0 +1,15 @@
+
+,it0)'k'-tUw6*+qw3L)U*]>G
+
+
+% ### Explanation:
+% 
+% * Subtract 'k' from the last character (gives n = -7, 0, 5 for 'd', 'k', 'p' respectively). 
+% 
+% * Compute v = n^2+6n-1 (gives 7, -1, 54 respectively). 
+% 
+% * Multiply that value v by the actual rank number (so k levels get negative products, d levels go from 7 to 49, p levels from 54 and above). 
+% 
+% * Do that for both input strings, compare the products
+% 
+% * Get the input string corresponding to the greater product

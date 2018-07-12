@@ -1,0 +1,30 @@
+
+%y=Y>/ti=PY>P/t3G=f1)w2G=f0)
+
+%y=Y>yi=*f1)y3G=PY>Pb2G=*f0)
+
+y   % implicitly get the first two inputs (the array and var1),
+    %  and duplicate the first input
+    %  stack: [[0 2 4 2 3 1 4 0 1 2 4 9] 2 [0 2 4 2 3 1 4 0 1 2 4 9]]
+=   % compare and return logical (boolean) array
+    %  stack: [[0 2 4 2 3 1 4 0 1 2 4 9] [0 1 0 1 0 0 0 0 0 1 0 0]]
+Y>  % cumulative maximum - make all values after the first 1 also 1s
+    %  stack: [[0 2 4 2 3 1 4 0 1 2 4 9] [0 1 1 1 1 1 1 1 1 1 1 1]]
+    %  now we have 1s in positions at and after the first time var1 appears
+y   % duplicate 2nd element in stack
+    %  stack: [[0 2 4 2 3 1 4 0 1 2 4 9] [0 1 1 1 1 1 1 1 1 1 1 1] [0 2 4 2 3 1 4 0 1 2 4 9]]
+i=  % compare with the next input (var2), returning a boolean array
+    % stack: [[0 2 4 2 3 1 4 0 1 2 4 9] [0 1 1 1 1 1 1 1 1 1 1 1] [0 0 1 0 0 0 1 0 0 0 1 0]]
+*   % multiply the two boolean arrays - so we'll have 1s only where var2 was present after the first occurrence of var1
+    % stack: [[0 2 4 2 3 1 4 0 1 2 4 9] [0 0 1 0 0 0 1 0 0 0 1 0]]
+f1) % find the index of the first 1 in that (this is our first result value)
+y3G=PY>Pb2G=*f0)
+% The second part of the code does the same thing, except for these changes:    
+% 
+% * use `2G` for second input (var1) and `3G` first 3rd input (var2) instead of implicit input or `i`, since those have been consumed
+% * use `PY>P` (flip array left-to-right, get cumulative maximum, flip back) instead of `Y>`, to get 1s *before the last occurrence* instead of after the first occurrence 
+% * use `f0)` to get *last* place where both conditions are true, instead of first place (works because MATL uses modular indexing, so 0 is taken to refer to the last index of the array)
+% 
+
+
+% y=f1)yi=fwy<)1)wt3G=f0)w2G=fwy>)0)

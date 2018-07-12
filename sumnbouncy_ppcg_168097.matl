@@ -1,0 +1,36 @@
+
+% l9`tVdZS&*0<a?wQtG>?.]y]QT]xvs
+
+l       % Initialize counter to 1
+9       % First value to check for being bouncy
+`       % Start do-while loop
+  tV    % duplicate the current number and convert to string
+        % (let's use the iteration where the number is 1411)
+        % stack: [1, 1411, '1411']
+  d     % compute differences between the characters
+        %  For non-bouncy numbers, this would be either all 
+        %  positive values and 0, or all negative values and 0
+        % stack: [1, 1411, [3 -3 0]]
+  ZS    % keep only the signs of those differences
+        % stack: [1, 1411, [1 -1 0]]
+  &*    % multiply that array by its own transpose, so that
+        %  each value is multiplied by every other value
+        %  for non-bouncy numbers, all products will be >=0
+        %  since it would have had only all -1s or all 1 (other than 0s)
+        % stack: [1, 1411, [1 -1  0
+                            -1  1 0
+                            0  0  0]]
+  0<a?  % if any value in the matrix is less than 0
+    wQ    % switch the counter to top, increment it
+          % stack: [1411, 2]
+    tG>?  % duplicate it, check if it's gotten greater than the input limit
+      .]    % if so, break out of loop
+  y]    % else, duplicate bouncy number from inside stack,
+        %  keeping a copy to be used for summing later
+        % stack: [1411, 2, 1411]
+  QT   % increment number, push True to continue loop
+]     % loop end marker
+x     % if we've broken out of loop, remove counter from stack
+v     % concatenate the bouncy numbers we've collected in stack and 
+s     % sum them
+  

@@ -1,0 +1,55 @@
+
+
+% 10 bytes:
+91:wX-dX>q
+
+%{
+
+### Explanation: 
+
+`91:` - Create the list of numbers from 1 to 91. 91 is character '[', which comes after 'Z'.
+So this effectively creates the list of all characters from '\x1' to '['. We mainly want
+those in the range ['A'-1 : 'Z'+1], but having the rest doesn't hurt, and needs less bytecount.)
+
+`w`   - Implicit input, bring input to top of stack (assume 'TUTORIALS')        
+
+`X-`  - Set difference. This leaves only the characters that were *not* found in the 
+input string, in their original order ('stable'). Stack: `'    !"#$%&'()*+,-./0123456789:;<=>?@BCDEFGHJKMNPQVWXYZ['`
+
+`d`   - Difference between successive elements in that list. Stack: `[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 2 1 2 1 5 1 1 1 1 1]`
+
+`X>`  - Get the maximum of those differences i.e. the max number of consecutive alphabets missing from the Set difference.
+
+`q`   - Decrement to get actual character count
+
+
+
+% 12 bytes:
+% Sud1=Y'*X>sQ
+
+%{
+
+     % implicit input (assume 'antidisestablishmentarianism ')
+Su   % Sort and unique
+     % stack: ['abdehilmnrst']
+d    % take the difference between successive characters
+     % stack: [1 2 1 3 1 3 1 1 4 1 1]
+1=   % check for places where difference was 1 
+     % (i.e. alphabetically successive characters were present)
+     % stack: [1 0 1 0 1 0 1 1 0 1 1]
+Y'   % take the run-length encoding of that
+     % stack: [[1 0 1 0 1 0 1 0 1]
+               [1 1 1 1 1 1 2 1 2]]
+*    % multiply the two elementwise, to zero out
+     %  non-successive differences
+X>   % take the maximum value from the resulting array
+     % stack: [2]
+s    % sum that (this is mainly here because 'a' results in
+     %  an empty array otherwise - this turns it to 0)
+Q    % we have number of differences, increment that to get
+     %  number of successive chars
+     % stack: [3]
+     % implicit output
+
+%}
+

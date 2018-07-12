@@ -1,0 +1,39 @@
+
+% 'a A'Yb&Ybt2L)Yo2L(g
+
+'a A'Yb   % form a cell array containing {'a', 'A'}
+&Yb       % split input into substrings, with either of those ('a' or 'A') as delimiters
+t2L)      % extract out the even positioned cells from that result
+Yo        % switch the case of those substrings
+2L(       % place the result back in even positioned cells of the original cell array
+g         % convert cell array to matrix, concatenating all substrings in the process
+          % implicit output
+
+
+% "H@'aA'm?~XHx}@w~?Yo]&h
+
+%{
+
+" % loop over input string's characters
+  H % Push content of clipboard H onto stack 
+    % used as inverted capslock toggle (default value: 2, capslock OFF)
+  @ % Push current character from string on stack
+  'aA'm? % Is character one of 'a' or 'A'?
+    ~XH  % if so, toggle capslock off and push that value back into clipboard
+    x    % and delete it from stack
+  } % else
+    @    % push current character again
+    w~   % switch to bring toggle to top, NOT it
+    ?Yo] % if capslock is on, switch the case of the current character
+  ]
+  &h % append character to output string
+     % implicit loop end, implicit output
+
+}%
+
+% 'a A'Yb&Yb"@gX@o~?Yo]&h
+
+% 0w"@t'aA'm?x~}y?Yo]w]]xv!
+% t'aA'mXHYsot&y*XzcYowf([]H(
+% t'aA'mXHYsoy3Y2m*32*Z~c[]H(
+

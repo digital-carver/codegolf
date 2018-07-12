@@ -1,0 +1,19 @@
+
+
+% d`tt@YS-a}@:)
+
+
+% ### Explanation: 
+
+d   % Get the differences between successive terms, as an array
+`   % Start do-while loop
+  tt  % duplicate the difference array twice
+  @   % push the current loop index value
+  YS  % circularly shift the difference array by that amount
+  -   % subtract the shifted diffs from the original diffs
+  a   % see if the subtraction resulted in any non-zeros
+    % if it did, shifted differences were not equal to original differences, so continue loop 
+}@ % if it didn't, then get loop index
+:) % get the differences upto the loop index, before they started repeating
+   % implicit loop end
+

@@ -1,0 +1,23 @@
+
+
+% 737515`tZ'-tkwy-':HH:MM:SS'XOw'%03d'YDwYcDXxT
+
+% with 1 sec sleep:
+% 737515`tZ'-tkwy-':HH:MM:SS'XOw'%03d'YDwYcDT&XxT
+
+`737515` % is "31st of March 2019" represented MATLAB's default epoch format (number of days from January 0, 0000, optionally including a fractional part to represent the time of day). I tried to shorten this by calculating it somehow, but its only factors are 5 and another six digit number (147503), and I couldn't figure out a way to do it in less than 6 bytes. 
+
+`    % start do-while loop
+tZ`- % duplicate Brexit date, get current date (& time), subtract
+tk   % duplicate the difference, get the floor of it (this gives number of days left)
+w    % switch stack to bring unfloored difference to top
+y    % duplicate the floored value on top of that
+-    % subtract to get fractional part representing time
+':HH:MM:SS'XO % get a datestr (date string) formatted this way
+w    % switch to bring number of days back on top
+'%03d'YD      % format that to take 3 places, with 0 padding if needed
+wYc  % switch to bring time string back on top, concatenate date and time
+D    % display the concatenated result!
+T&Xx % clear screen after a 1 second pause (the pause is optional, without it the call is `Xx`)
+T    % push True on stack to continue loop
+
