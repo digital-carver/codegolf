@@ -28,7 +28,7 @@ def player2(computer_cards, dealt_cards):
     synergistic(computer_cards, dealt_cards)
 
 i = 0
-while (win2 <= 100) and (win1 <= 100) and (i <= 1000): #0):
+while (win2 <= 100) and (win1 <= 100) and (i <= 10000): #0):
     played_cards = []
     random.shuffle(cards)
 
@@ -36,7 +36,9 @@ while (win2 <= 100) and (win1 <= 100) and (i <= 1000): #0):
     card_2_rem = list(cards[26:52])
 
     while len(card_1_rem) != 0 and len(card_2_rem) != 0:
+        print("P1: ")
         player1(card_1_rem, played_cards)
+        print("P2: ")
         player2(card_2_rem, played_cards)
 
     if len(card_1_rem) == 0:
@@ -56,8 +58,8 @@ while (win2 <= 100) and (win1 <= 100) and (i <= 1000): #0):
             else:
                 score_1 = score_1 + item[0]
         with open("sevens_result.txt", "a") as myfile:
-            myfile.write("\n" + str(score_1) + "   " +
-                         str(score_2) + "    Player 2 wins")
+            myfile.write("\n" + str(score_1) + "            " +
+                         str(score_2) + "          Player 2 wins")
 
     if score_1 < score_2:
         win1 = win1 + 1

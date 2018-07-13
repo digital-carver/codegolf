@@ -29,8 +29,8 @@ def synergistic(cards_in_hand, played_cards):
             continue
         visible = set(table[suit] + hand[suit])
         opp_hand = set(range(1,14)) - visible
-        highcard = max(table[suit]) + 1
 
+        highcard = max(table[suit]) + 1
         if highcard in hand[suit]:
             if highcard+1 in opp_hand:
                 playable_cards[(highcard, suit)] = 1
@@ -49,7 +49,7 @@ def synergistic(cards_in_hand, played_cards):
         return (cards_in_hand, played_cards)
 
     best_card = list(max(playable_cards, key=playable_cards.get))
-    #print(hand, "\n", table, "\n", best_card)
+    print(hand, "\n", table, "\n", best_card)
     play_card(best_card)
 
     return (cards_in_hand, played_cards)
