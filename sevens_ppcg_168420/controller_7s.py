@@ -20,28 +20,30 @@ list_of_score_2 = []
 win1 = 0
 win2 = 0
 
-from player_7s import synergistic
+#from player_7s import synergistic, tactical
 def player1(computer_cards, dealt_cards):
-    synergistic(computer_cards, dealt_cards)
+    #tactical(computer_cards, dealt_cards)
+    pass
 
 def player2(computer_cards, dealt_cards):
-    synergistic(computer_cards, dealt_cards)
+    #tactical(computer_cards, dealt_cards)
+    pass
 
 i = 0
-while (win2 <= 100) and (win1 <= 100) and (i <= 10000): #0):
+while (win2 <= 100) and (win1 <= 100) and (i <= 10000):
     played_cards = []
     random.shuffle(cards)
 
     card_1_rem = list(cards[0:26])
     card_2_rem = list(cards[26:52])
 
-    while len(card_1_rem) != 0 and len(card_2_rem) != 0:
-        print("P1: ")
+    while card_1_rem and card_2_rem:
+        #print("P1: ")
         player1(card_1_rem, played_cards)
-        print("P2: ")
+        #print("P2: ")
         player2(card_2_rem, played_cards)
 
-    if len(card_1_rem) == 0:
+    if card_2_rem:
         for item in card_2_rem:
             if item[0] == 13 or item[0] == 12 or item[0] == 11 or item[0] == 10:
                 score_2 = score_2 + 10
@@ -50,8 +52,10 @@ while (win2 <= 100) and (win1 <= 100) and (i <= 10000): #0):
         with open("sevens_result.txt", "a") as myfile:
             myfile.write("\n" + str(score_1) + "            " +
                          str(score_2) + "          Player 1 wins")
+        win1 = win1 + 1
+        win2 = 0
 
-    elif len(card_2_rem) == 0:
+    elif card_1_rem:
         for item in card_1_rem:
             if item[0] == 13 or item[0] == 12 or item[0] == 11 or item[0] == 10:
                 score_1 = score_1 + 10
@@ -60,11 +64,6 @@ while (win2 <= 100) and (win1 <= 100) and (i <= 10000): #0):
         with open("sevens_result.txt", "a") as myfile:
             myfile.write("\n" + str(score_1) + "            " +
                          str(score_2) + "          Player 2 wins")
-
-    if score_1 < score_2:
-        win1 = win1 + 1
-        win2 = 0
-    elif score_2 > score_1:
         win2 = win2 + 1
         win1 = 0
 
@@ -75,17 +74,16 @@ while (win2 <= 100) and (win1 <= 100) and (i <= 10000): #0):
     score_2 = 0
     i = i + 1
 
-
 final_score_1 = sum(list_of_score_1)
 final_score_2 = sum(list_of_score_2)
+
 if final_score_1 > final_score_2:
     print("Player 2 wins!")
-    print("Score of player 1 is " + str(final_score_1))
-    print("Score of player 2 is " + str(final_score_2))
 elif final_score_1 < final_score_2:
     print("Player 1 wins!")
-    print("Score of player 1 is " + str(final_score_1))
-    print("Score of player 2 is " + str(final_score_2))
+
+print("Score of player 1 is " + str(final_score_1))
+print("Score of player 2 is " + str(final_score_2))
 
 #plt.plot(list_of_score_1)
 #plt.plot(list_of_score_2)
