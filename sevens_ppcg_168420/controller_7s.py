@@ -28,7 +28,7 @@ def player2(computer_cards, dealt_cards):
     synergistic(computer_cards, dealt_cards)
 
 i = 0
-while (win2 <= 100) and (win1 <= 100) and (i <= 10): #000):
+while (win2 <= 100) and (win1 <= 100) and (i <= 1000): #0):
     played_cards = []
     random.shuffle(cards)
 

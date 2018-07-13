@@ -14,8 +14,9 @@ def synergistic(cards_in_hand, played_cards):
         played_cards.append(card)
 
     hand = list2dict(cards_in_hand)
-    if not played_cards and 7 in hand['hearts']:
-        play_card([7, 'hearts'])
+    if not played_cards:
+        if 7 in hand['hearts']:
+            play_card([7, 'hearts'])
         return (cards_in_hand, played_cards)
     table = list2dict(played_cards)
 
@@ -48,7 +49,7 @@ def synergistic(cards_in_hand, played_cards):
         return (cards_in_hand, played_cards)
 
     best_card = list(max(playable_cards, key=playable_cards.get))
-    print(hand, "\n", table, "\n", best_card)
+    #print(hand, "\n", table, "\n", best_card)
     play_card(best_card)
 
     return (cards_in_hand, played_cards)
