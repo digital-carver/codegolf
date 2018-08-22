@@ -1,5 +1,26 @@
 
-,it0)'k'-tUw6*+qw3L)U*]>G
+,0&)Uwo'dpk'1L6^XE*w]<G
+
+%{
+
+,              % Do this twice (once for each input):
+0&)            % Split the input into number, last letter
+U              % Convert '21' to 21 i.e. str2num
+wo             % Bring the letter out and change it to numeric (its ASCII code)
+'dpk'          % Push the array 'dpk'
+1L6^           % Push [1 2 1j] and raise to ^6, giving [1 64 -1]
+XE             % Find the letter in 'dpk', replace it with its corresponding 
+               %  number from the second array (d=1, p=64, k=-1)
+*              % Multiply the number part by this
+w              % Switch to bring out the other input to top
+]              % End loop
+               % Stack has [second input's value, first input's value]
+<              % Is second input < first input? 1 or 0
+G              % Retrieve the corresponding input: 1 for 1st input, 0 for last (2nd) input
+
+%}
+
+% ,it0)'k'-tUw6*+qw3L)U*]>G
 
 
 % ### Explanation:

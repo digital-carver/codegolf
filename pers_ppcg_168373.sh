@@ -1,7 +1,7 @@
 # bash, 10 bytes (non-competing)
 
-    touch $@
-    ls
+#    touch $@
+#    ls
 
 # Unix filenames [can contain][1] any character except `NUL` and `/`, and their names can be [upto 255 bytes long](https://serverfault.com/a/9548/188067) so this will be able to store only strings up to that length (consider that a limitation of the storage medium), and that don't contain '/' in them. That's one reason this is non-competing, another is that this assumes the directory it's run on is empty (or that extraneous output from `ls` is allowed). I still wanted to post this because it just seemed a cool and non-obvious way to store information. 
 
