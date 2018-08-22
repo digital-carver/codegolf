@@ -1,0 +1,16 @@
+
+
+
+{{s₂ᶠ}ᵐ-ᵐ²c+ṅ}R&\↰₁;R+
+
+?{{s₂ᶠ}ᵐ-ᵐ²c+ṅ}R&\↰₁;R+.
+?{            }             Run this predicate (p1) on the input
+  {s₂ᶠ}ᵐ                    Find all substrings of length 2 of each row of input
+        -ᵐ²                 Find the differences between each 2 elements
+           c+               Concatenate and add those up
+             ṅ              Negate, because we want b-a and - does a-b
+               R            Call the result of that R (row delta sum)
+                &\          Transpose the input
+                  ↰₁        And run predicate p1 on that to get column delta sum
+                    ;R+     Sum that with the row delta sum
+                       .    The result of that is the output

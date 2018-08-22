@@ -1,0 +1,29 @@
+
+
+~c₃Ckt[İ,0]≠∧C⟨hct⟩↰|
+
+~c₃                     % Partition the input into 3 subarrays
+   C                    % Call that array-of-arrays C
+    kt[İ,0]             % Its second element should be of the form [Integer, 0]
+           ≠            % And its elements shouldn't be equal (i.e.
+                        %   the Integer shouldn't be 0)
+            ∧C⟨hct⟩     % Then, remove that [I, 0] element from C
+                   ↰    % And call this predicate recursively
+                    |   % When the above fails (when it can't find a partition with 
+                        %  [I, 0] in it), then just output the input
+
+
+∋0&b,1;?z{=|¬∋0&}ˢtᵐ↰|
+
+∋0           If input contains a 0, 
+&b           Remove input's first element, getting list of "next" elements
+,1           Append 1 to that to handle last element
+;?z          Zip that with input
+{      }ˢ    Select only zipped pairs where
+ =|          both elements are equal (to keep 0s followed by 0s)
+   ¬∋0&      or the pair doesn't contain a 0
+             this removes both the (pairs containing the) value
+              that is followed by a 0, and the 0 itself
+tᵐ           Recover back the (filtered) input array elements from the zip
+↰            Call this predicate recursively 
+|            If input contains no 0s, input is the output 

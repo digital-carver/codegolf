@@ -1,0 +1,21 @@
+
+% ḅ{a₀ᵇ+ᵐ}ᵐc
+
+ḅ             % split input into "blocks" of equal value
+ {     }ᵐ     % map this predicate on each such block:
+  a₀ᵇ            % Find all prefixes (initial subsequences) of the block
+                 %  Returns them in increasing order of length
+     +ᵐ          % Sum the values in each subsequence
+                 % This results in each block being replaced by its cumulative sum values
+         c    % concatenate the results back into a single array
+
+
+
+%    ḅ{+0&|l⟦₁}ᵐc
+
+% ḅ               % split input into "blocks" of equal value
+%  {       }ᵐ     % map this predicate on each such block:
+%   +0&           % if the block sums to 0 (i.e. is all 0s), leave it as is
+%      |l         % else, it's a 1-block, so find its length
+%        ⟦₁       % and create range 1 to len to replace the block 
+%            c    % concatenate the results back into a single array

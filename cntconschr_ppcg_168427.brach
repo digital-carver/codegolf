@@ -1,0 +1,18 @@
+
+
+% {⊇pS∧ẠsSl}ᶠ⌉
+
+{        }ᶠ    % Find all values that satisfy this predicate
+           ⌉   % And get their maximum
+               % The predicate being:
+ ⊇pS           % There exists a permutation of a subset of the input
+               %  Call it S
+    ∧          % And, 
+      sS       % S is a substring of
+     Ạ         %  the set of alphabets, Ạ, 
+        l      % Then, the length of that substring is the return value of the 
+               %  predicate
+    
+
+
+% {dosS∧ẠsSl}ᶠ⌉

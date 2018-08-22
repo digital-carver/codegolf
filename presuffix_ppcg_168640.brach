@@ -1,0 +1,15 @@
+
+
+% tṇ₁W&h;Wz{~a₀ᵈR&hl;Rb₍}ˢ
+
+% Input is an array with the prefix as the first element and the text as the second element. 
+
+
+tṇ₁W                       % Split the text at spaces, call that W
+    &h;Wz                  % Zip the prefix with each word, to give a list of pairs
+         {            }ˢ   % Select the outputs where this predicate succeeds:
+          ~a₀ᵈ             % The given prefix is a prefix of the word
+              R            % then call the word R
+               &hl         % Get the length of the prefix
+                  ;Rb₍     % And behead R that many times (i.e. remove 
+                           %  that many initial characters)

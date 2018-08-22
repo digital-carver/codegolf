@@ -1,0 +1,13 @@
+
+
+tᵍkᵐ²cᵐ{ps₅~s"A23456789TJQKA"}ᵉ
+
+ ᵍ                    Group input by
+t                     each element's "tail" (i.e. suit)
+kᵐ²                   Knife off the suit character from each element in each array
+cᵐ                    Concatenate the elements of each suit array into a string
+{              }ᵉ     There exists at least one string in that such that
+ p                    it has a permutation
+ s₅                   which has a subtring of length 5
+ ~s                   which is also a subtstring of
+ "A23456789JQKA"

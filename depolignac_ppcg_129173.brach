@@ -1,0 +1,10 @@
+
+/₂ℕ|>ṗ;?-₍ḋ;2xĖ
+
+
+/₂ℕ             % It's an even number
+|>ṗ             % Or there exists a prime number less than the input
+   ;?-₍         % which when subtracted from the input
+       ḋ        % gives a result that has a prime factorization such that
+        ;2x     % when 2 is removed from the factorization result, 
+           Ė    % the result is empty

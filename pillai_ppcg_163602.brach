@@ -1,0 +1,9 @@
+
+
+% Pillai primes
+
+ṗ          Input is a prime
+>.         And output is a number less than the input
+ḟ+₁;?%0    And output's factorial + 1 mod input is 0
+&-₁;.%>0   And input - 1 mod output is greater than 0
+∧          No further constraints

@@ -1,0 +1,14 @@
+
+
+% ,1{t+₁I&⟦₁ᵐ⁾;I}ⁱ⁽ṡᵐ⁾c
+
+                 % Implicit input, list [a, b]
+,1               % Append iteration index 1 to the list
+{           }ⁱ⁽  % Do this iteratively a times, with [b, i] as the initial input
+ t+₁I            % Increment iteration index, let this be I
+     &⟦₁ᵐ⁾       % Map the "range from 1 to input" predicate on the first part of input
+                 %   (b in the first iteration), at depth given by (old) iteration index
+          ;I     % Append the incremented index to this, this is the input to next iteration
+ṡᵐ⁾              % Take the sign of each element, mapped at depth given by final I
+c                % "Concatenate" to remove extra surrounding array
+

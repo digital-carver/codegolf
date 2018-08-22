@@ -1,0 +1,15 @@
+
+
+?~l.<₁a₀ᵇ+ᵐṗᵐ∧    Full code (? at beginning is implicit)
+
+?~l.              Output is a list whose length is the input
+    <₁            Output is an increasing list
+      a₀ᵇ+ᵐ       And the cumulative sum of the output
+           ṗᵐ     Consists only of prime numbers
+             ∧    No further constraints on output
+
+Explanation for a₀ᵇ+ᵐ:
+a₀ᵇ               Get the list of all prefixes of the list
+                  Is returned in increasing order of length
+                  For eg. [2, 3, 6, 8] -> [[2], [2, 3], [2, 3, 6], [2, 3, 6, 8]]
+   +ᵐ             Sum each inner list  -> [2, 5, 11, 19]

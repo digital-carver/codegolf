@@ -1,0 +1,16 @@
+
+
+% g;?z{tWl⟧₆∋I;W↺₍R;W≠&h∋R}ˢ
+
+g;?z                      % Zip the whole input with each word in it respectively
+{                   }ˢ    % Apply this predicate to each pair in the zip
+                          %   and select the successful values
+ tW                       % Let the current word be W
+   l⟧₆∋I                  % There exists a number I from 1 to length(W)-1
+        ;W↺₍R             % And R is the result of circularly shifting the 
+                          %   current word I times 
+             ;W≠          % And R is not the current word itself (needed for words like "tata")
+                &h∋R      % And R is one of the input dictionary words
+                          % (R is implicitly the output of the predicate, and 
+                          %  successful R values are collected and output by the ˢ)
+

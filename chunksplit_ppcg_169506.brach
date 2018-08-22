@@ -1,0 +1,31 @@
+
+
+% hW&t~c.k{↰₂ˢl}ᵐ;WxĖ∧.bhᵐ↰₂ᵐ∧.t↰₂ˢl≤W∧
+
+% Assumes the predicate is present as predicate 2 below this code.
+
+% Explanation:
+
+hW&               % First input is W, the expected "weight" of each chunk
+                  %  (i.e. the number of items passing predicate in each chunk)
+
+t                 % Take the second input, the list of items
+ ~c.              % Output is a partition of this list
+    k{    }ᵐ      % For each partition (chunk) except the last, 
+      ↰₂ˢ         %   Select the items in the chunk that pass the predicate
+         l        %   Get the length of that
+                  % (So now we have the list of the "weights" of each chunk)
+            ;Wx   % Remove the input expected weight from this list, and 
+               Ė  %  the result of this should be empty.
+                  %  This verifies that the list of weights is either 
+                  %  composed of all W-values, or is empty (when input is [0 0 0] for eg.)
+
+    ∧.bhᵐ↰₂ᵐ      % And, the first element of each chunk (except the first) should
+                  %  pass the predicate. This is another way of saying:
+                  %  "Items failing the predicate are allocated to the earliest chunk"
+
+    ∧.t↰₂ˢl≤W     % And, the final chunk (which we haven't constrained so far)
+                  %  should have weight ≤ the input expected weight
+                  %  This disallows putting everything in the final chunk and calling it a day!
+
+    ∧             % (no further constraints on output)

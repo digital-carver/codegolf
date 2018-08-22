@@ -1,0 +1,21 @@
+
+,Ṣ↻s₂ᶠ{h∈" -"&t.∧Ạụ∋}ˢ
+
+,Ṣ↻                      % prepend a space to input
+   s₂ᶠ                   % get all substrings of length 2 from that, to get prefix-character pairs
+      {              }ˢ  % get the successful outputs from this predicate: 
+       h∈" -"              % the prefix is - or space
+               &t.∧        % then the character is the output of this predicate if:
+                  Ạụ∋        % the alphabet uppercased contains the character
+
+
+
+% Older:
+k,Ṣ↻                     % remove last character and prepend a space
+    ;?z                  % zip that with the input, to get prefix-character pairs
+       {             }ˢ  % get the values where this predicate succeeds: 
+        h∈" -"             % the prefix is - or space
+              &t.∧         % then the character is the output of this predicate if:
+                  Ạụ∋        % the alphabet uppercased contains the character
+
+

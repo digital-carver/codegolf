@@ -1,0 +1,12 @@
+
+
+
+    {⊇l₂.c¬≠∧}ᶠcᵐ²   Full code
+    {        }ᶠ      Find all outputs of this predicate:
+     ⊇l₂.             A two-element subset of the input
+         c            which when its subarrays are concatenated
+          ¬≠          does not have all different elements
+                      (i.e. some element is repeated)
+            ∧         (no further constraint on output)
+               cᵐ²   Join vertex names in each subsubarray in that result
+

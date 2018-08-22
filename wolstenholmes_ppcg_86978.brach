@@ -1,0 +1,27 @@
+
+
+% tT;T P&t^₃D&h↰₁S&h;Pz×₎ᵐ↰₁;S-;D/
+% hḟF&⟨{-ḟ}×{tḟ}⟩;F↻/
+
+    % Predicate 1 - Given [n, r], return binomial(n, r)
+    hḟF              % Compute n!, set as F
+    &⟨               % Fork:
+      {-ḟ}           % (n - r)!
+      ×              % times
+      {tḟ}           % r!
+    ⟩                
+    ;F↻              % Prepend n! to that
+    /                % Divide n! by the product and return
+
+    % Predicate 0 (Main)
+    tT;T P           % Set P to the array [p, p] 
+    &t^₃D            % Set D as p^3
+    &h↰₁S            % Call predicate 1 on [a, b], 
+                     %  set S as the result binomial(a, b)
+    &h;Pz×₎ᵐ         % Form array [ap, bp]
+    ↰₁               % Call predicate 1 on that to get binomial(ap, bp)
+    ;S-              % Get binomial(ap, bp) - binomial(a, b)
+    ;D/              % Divide that by the denominator term p^3
+                     % Implicit output
+
+

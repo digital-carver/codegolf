@@ -1,0 +1,20 @@
+
+
+{⊇Ċ}ᶠzᵐ{↰₁ᶠ{⟨hz{t↔}⟩×ᵐ=}ᵐ}ᵐ
+{⊇Ċ}ᶠ                        Get each pair of rows from the matrix
+                             eg.: [ [[a, b, c], [k, l, m]], ... ]
+     zᵐ                      Zip each pair's elements
+                                  [ [[a, k], [b, l], [c, m]], ... ]
+       {                 }ᵐ  Map this over each pair of rows:
+                                  [[a, k], [b, l], [c, m]]
+        ↰₁ᶠ                  Get each pair of paired elements from the rows
+                                  [[[a, k], [b, l]], [[b, l], [c, m]], [[a, k], [c, m]]]
+           {           }ᵐ    Map this over each pair of pairs
+                                  [[a, k], [b, l]]
+            ⟨hz{t↔}⟩         Zip the first pair with the reverse of the second
+                                  [[a, l], [k, b]]
+                    ×ᵐ       Multiply within each sublist
+                                  [al, kb]
+                      =      The results should be equal
+                             (If the results are unequal for any pair, the whole predicate fails,
+                              and outputs false.)

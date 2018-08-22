@@ -1,0 +1,20 @@
+
+
+,1{hH&t<NḋlH;N}ⁱ⁽t
+
+
+                      Implicit input, say [5, 3]
+,1                    Append 1 to the input list. [5, 3, 1]
+  {           }ⁱ⁽     Repeat this predicate the number of times given by
+                        the first element of the list (5),
+                        on the rest of the list [3, 1]
+   hH&                Let's call the first element H
+      t<N             There is a number N greater than the second element
+         ḋ            Whose prime factorization's
+          l           length
+           H          is equal to H
+            ;N        Then, pair that N with H and let that be input for
+                      the next iteration
+                 t    At the end of iterations, take the last N
+                      This is implicitly the output
+

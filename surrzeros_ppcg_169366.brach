@@ -1,0 +1,24 @@
+
+
+    ↰₁\↰₁\
+    s.h+>0∧.t+>0∧
+
+### Explanation
+
+Predicate 1:
+
+?s.h+>0∧.t+>0∧
+  .              output is
+ s               a subsequence of the rows of
+?                the input (implicit)
+   h             also, output's head element (first row)
+    +>0          has a sum > 0 (i.e. has at least one non-zero value)
+       ∧.t+>0    and similarly the output's tail element (last row)
+∧                (don't implicitly unify that 0 with the output)
+
+ Predicate 0: 
+
+↰₁        Call predicate 1 to remove all-zero rows
+  \       Transpose the result
+   ↰₁     Call pred 1 again, now to remove all-zero columns
+     \    Transpose the result to have correct output orientation

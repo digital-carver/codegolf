@@ -1,0 +1,18 @@
+
+
+% 0|⟧^₂ᵐ∋N&;N-ℕ↰R∧N√ȧ×₄;N,R+
+
+0           % The output is 0 if input is 0
+|           % Otherwise,
+⟧           % Form decreasing range from input I to 0
+^₂ᵐ         % Get the squares of each of those numbers
+∋N          % There is a number N in that list
+&;N-ℕ       % With I - N being a natural number >= 0 i.e. N <= I
+            % Since we formed a decreasing range, this will find the largest such number
+↰           % Call this predicate recursively with that difference I - N as the input
+R           % Let the result of that be R
+∧N√ȧ        % Get the positive square root of N
+×₄          % Multiply by 4
+;N,R+       % Add N and R to that
+            % The result is the (implicit) output
+
