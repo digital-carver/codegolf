@@ -1,0 +1,13 @@
+
+% "@X@qYS&h
+
+
+% tsn:ql&YS
+
+      &YS   % circularly shift the matrix
+     l      % across rows (i.e. shift each column) by the amounts
+            %  given by this array:
+tsn         % duplicate input, get the sum of each column, get the 
+            %  number of elements in that (which is the number of columns)
+   :q       % construct range 1 to ncols, then decrement to start at 0
+            % (implicit output)

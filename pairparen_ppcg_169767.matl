@@ -1,0 +1,26 @@
+
+% oo~`tnw52B5LZttnb<]XB10X-
+
+o         % Convert the parantheses to their ASCII codes
+          %  40 for '(', 41 for ')'
+o         % Parity - 1 for odd, 0 for even
+~         % Not - change 0 to 1 and vice versa, so '(' is now 1 and ')' 0
+          % Input char array is now a binary array B
+`         % Do-while loop
+  tn          % Get the length of the array 
+  w           % Bring the array B back on top
+  52B         % Push the binary value of 52 on stack
+              %  [1 1 0 1 0 0] (equivalent to '(()())')
+  5L          % Push the constant [1 0] for '()'
+  Zt          % Replace the sequence [1 1 0 1 0 0] in array B
+              %  with [1 0]
+  tn          % Get the length of the array after replacement 
+  b<          % Has it decreased? If so, continue loop
+  ]       % end loop
+          % Final value for balanced input will be
+          %  either [1 0 1 0] for the remaining outer '()()'
+          %  or an empty array [] for empty '' input
+XB        % Convert the final binary array back to decimal
+10X-      % Set difference, remove 10 from that result 
+          % Result is [] empty array for balanced input, otherwise 
+          %  some decimal number ≠ 10 for unbalanced input

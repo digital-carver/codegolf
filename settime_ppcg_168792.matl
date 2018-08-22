@@ -1,0 +1,60 @@
+
+% 1Oi9\"@5<?y@3-ZS*+}wx7@-X^w]]wx&Zjh24 60h\'%02d:%02d'YD
+
+% Represents hour and minutes using complex numbers, with the real part being hours and the imaginary part minutes. 
+
+1     % Push 1 on the stack
+      % represents which timer box we're in, starts at hour box
+      % imaginary number j would represent minutes box
+O     % Push initial hour and minutes 0+0j
+i9\   % Fetch input, mod each character's ASCII value by 9.
+      % Gives 4 1 8 6 for ^ v > < respectively
+"     % iterate through (modded) input
+  @5<?     % Push current input, see if it's < 5 
+           % if so, it's an up or down time change
+    y        % so copy out the box indicator (1 or j)
+    @3-      % Subtract 3 from the current input
+    ZS       % Take the result's sign (-1 for v, 1 for ^)
+    *        % Multiply indicator with that
+    +        % Add the result to the time value
+  }        % else, it's a right or left arrow
+    wx       % so bring out the box indicator and delete it
+    7@-      % Subtract current input from 7. 1 for < and -1 for >
+    X^       % Take the square root of that. 1 for < and j for >
+    w        % switch stack to bring time value on top again
+  ]       % end if
+]     % end loop
+wx    % bring box indicator out, delete it
+&Zj   % split the complex time value to real and imaginary
+h     % then concatenate them into an array
+24 60h\ % mod hour and minute values by 24 and 60 respectively
+'%02d:%02d'YD % sprintf the time array with 0-padding
+
+
+% 5L[O0]i9\"@5<?y@3-ZS*+}wx5L@7>?P]w]24 60h\]'%02d:%02d'YD
+
+
+%5L    % Push the literal [1 0] on the stack
+%      % represents which timer box we're in, starts at hour box
+%[O0]  % Push initial hour and minutes [0 0]
+%i9\   % Fetch input, mod each character's ASCII value by 9.
+%      % Gives 4 1 8 6 for ^ v > < respectively
+%"     % iterate through (modded) input
+%  @5<?     % Push current input, see if it's < 5 
+%           % if so, it's an up or down time change
+%    y        % so copy out the box indicator array
+%    @3-      % Subtract 3 from the current input
+%    ZS       % Take the result's sign (-1 for v, 1 for ^)
+%    *        % Multiply indicator array with that
+%    +        % Add the result to the time array
+%  }        % else, it's a right or left arrow
+%    wx       % so bring out the box indicator array and delete it
+%    5L       % Push [1 0] on stack
+%    @7>?    % Is current input > 7? If so it's >
+%      P         % so flip [1 0] to [0 1], to switch to modifying minutes
+%    ]w      % end-if, switch stack to bring hour-minutes array on top again
+%  ]       % end outer if
+%  24 60h\ % mod hour and minute values by 24 and 60 respectively
+%]     % end loop
+%'%02d:%02d'YD % sprintf the time array with 0-padding
+%

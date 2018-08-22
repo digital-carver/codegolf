@@ -1,0 +1,30 @@
+
+% specific to isodd predicate
+% toYsi/Xk1y>+!w7XQ
+
+% generic, only runs locally
+% HyX$Ysi/Xk1y>+!w7XQ
+
+H    % Push the function name to be called, assumed to be 
+     %  stored in the H clipboard
+y    % Take the first input, push copies of it both below and above the 
+     %  function name
+X$   % Call the function (say 'isupper') with the input as argument
+     %  returns a boolean vector
+Ys   % Cumulative sum
+i/   % Take the chunk size and divide each element by it
+Xk   % ceil
+1y>+ % Turn the (initial) 0s to 1s
+!    % Transpose. Now we have a column vector specifying which chunk 
+     %  each input element should go into
+w    % Bring the other copy of the input on top 
+7    % Code for this function: '@(x){x.'}'
+     %  i.e. place each chunk in a row vector and enclose it in a cell
+XQ   % 'accumarray' - split the input into chunks based on
+     %   the given column vector, apply the given function to each chunk
+     %   (which here just wraps it up as a cell), and accumulate the results
+     %   in an array.
+     % implicit output
+
+
+

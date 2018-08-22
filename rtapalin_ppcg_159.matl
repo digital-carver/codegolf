@@ -1,0 +1,17 @@
+
+
+
+% `Vt2&P=?5M.}1MvUsT
+
+         % (implicit input)
+`        % do-while loop
+  Vt     % convert the number into a string, duplicate it
+  2&P    % flip the copy left-to-right
+  =      % are they equal? 
+    ?5M. % if yes, push the number back on the stack and exit
+         % (implicit output display)
+    }1M  % else, push the number and its reverse (as strings) again on to the stack
+    vUs  % convert them to numbers and add them
+    T    % "True" value to continue loop, this time with the sum as the input number
+         % (implicit loop end)
+

@@ -1,0 +1,30 @@
+
+
+%    qqtl&O61bti*Xl:(HG100*V37hyn2/kyny+q&:(91w93v!c
+
+% Explanation: 
+
+             % implicit input, say w = 79
+    qq       % decrement input by 2 (to allow brackets on either side)
+    tl&O     % duplicate and create array with that many zeros
+    61       % Push '=' character
+    b        % bubble up w-2 from below
+    ti*      % duplicate and multiply by second input, say p = 0.15
+             %  stack: [[0;0;0;...;0], 61, 77, 11.55]
+    Xl       % take minimum of (w-2) and (w-2)*p
+             %  (used when p > 1, make eligible for bonus)
+    :        % create array 1 to that value 
+             %  stack: [[0;0;0;...;0], 61, [1 2 3 4 5 ... 11]]
+    (        % assign into the first array the value 61 ('=') at the 
+             %  indices denoted by the third array
+    HG       % push second input again
+    100*V    % multiply by 100 and convert to string
+    37h      % append the '%' symbol to it
+    yn2/k    % compute half of the length of the output array
+    yny+q    % copy of that + length of the 'N%' string - 1
+             % stack: [[61;61;61;...;0;0;0], '15%', 38, 40]
+    &:       % make a range from the first to the second (38 to 40)
+    (        % assign the 'N%' string at those places into the output array
+    91w93    % surround by '[' (ASCII 91) and ']' (93) characters
+    v!       % combine into a single array, make it horizontal for display, 
+    c        % change it to character type (implicitly displayed)

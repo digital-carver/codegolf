@@ -1,0 +1,35 @@
+
+
+% Final answer based on Lynn's:
+
+% :t!>tPY|!"@X@oQ&P!
+
+% 2/tk:wXk:Ph"X@ot~XHh@Gy-hHQ&PY"
+
+
+         % implicit input, say 5
+2/       % divide input number by 2 [2.5]
+tk       % make a copy and floor that [2.5, 2]
+:        % create range 1 to the floored value [2.5, [1, 2]]
+wXk      % bring out the division result and this time ceil it
+         %  [[1, 2], 3]
+:        % create range 1 to that [[1, 2], [1, 2, 3]]
+Ph       % flip the last array and concatenate horizontally 
+         %  [[1, 2, 3, 2, 1]]
+"        % loop through the array
+  X@o    % Is the current loop index odd? 1 for odd, 0 for even
+  t~     % duplicate and logical negate that
+  XH     % copy that value to clipboard H
+  h      % and concatenate the values ([1 0] on odd iterations, [0 1] on even) 
+  @      % push current value from array (say 2, then stack is [[0 1], 2)
+  G      % push input again
+  y-     % subtract current array value from input [[0 1], 2, 3]
+  h      % concatenate those two [[0 1], [2, 3]]
+  H      % get the stored value from clipboard H (1 for even iterations, 0 for odd) 
+  Q      % increment that
+  &P     % flip the array in that dimension: in even iterations, this flips
+         %   across columns and hence inverts the two values. [[0 1], [3, 2]]
+         %   in odd iterations, it's a no-op
+  Y"     % run-length decoding - repeat the element from first array the number of times
+         %  specified in the second array
+         % implicit loop end, implicit output

@@ -1,0 +1,7 @@
+
+
+% Given two values (a, b), find the maximum of those using a mathematical expression
+% max(a, b) =  ((sign(b - a) - 1) * a + (sign(a - b) - 1) * b) / (-2)
+
+dZStqG1)*w_qG2)*+-2/
+

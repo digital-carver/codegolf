@@ -1,0 +1,131 @@
+
+t&l[2K0]B2:&ZvZ+
+
+%{
+
+The main part of the code is creating a matrix \$ K \$ for convolution:
+
+$$ \mathbf{K} = \begin{pmatrix}0&1&0&1&0\\1&0&0&0&1\\0&0&0&0&0\\1&0&0&0&1\\0&1&0&1&0\end{pmatrix} $$
+
+(Relative to the centre of the matrix, each 1 is a valid knight's move.)
+
+`t&l` - Form a nxn matrix of all 1s (where n is the input). Let this be M.
+
+`[2K0]` - Push an array containing [2, 4, 0] on stack
+
+`B`  - Convert all to binary, padding with 0s as needed
+
+    0 1 0
+    1 0 0
+    0 0 0
+
+`2:&Zv` - Mirror that on both dimensions, without repeating the edge row/column.
+This gives us the required matrix K. 
+
+    0 1 0 1 0
+    1 0 0 0 1
+    0 0 0 0 0
+    1 0 0 0 1
+    0 1 0 1 0
+
+`Z+` - Perform 2D convolution of K over the earlier matrix M (`conv2(M, K, 'same')`),
+summing up the 1s at legal knight move targets for each position  
+
+Result matrix is displayed implicitly.
+
+
+%}
+
+% t&l21BYTl6Lt&(~Z+
+
+%{
+
+The main part of the code is creating a matrix \$ K \$ for convolution:
+
+$$ \mathbf{K} = \begin{pmatrix}0&1&0&1&0\\1&0&0&0&1\\0&0&0&0&0\\1&0&0&0&1\\0&1&0&1&0\end{pmatrix} $$
+
+(Relative to the centre of the matrix, each 1 is a valid knight's move.)
+
+`t&l` - Form a nxn matrix of all 1s (where n is the input). Let this be M.
+
+`21B` - Get the binary representation of 21 (`[1 0 1 0 1]`)
+
+`YT`  - Form the Toeplitz matrix of that
+
+    1 0 1 0 1
+    0 1 0 1 0
+    1 0 1 0 1
+    0 1 0 1 0
+    1 0 1 0 1
+
+`l6Lt&(` - Make all the non-border elements 1
+
+    1 0 1 0 1
+    0 1 1 1 0
+    1 1 1 1 1
+    0 1 1 1 0
+    1 0 1 0 1
+
+`~`  - Negate that to get the required matrix K
+
+`Z+` - Perform 2D convolution of K over the earlier matrix M (`conv2(M, K, 'same')`),
+summing up the 1s at legal knight move targets for each position  
+
+Result matrix is displayed implicitly.
+
+
+%}
+
+%{
+Initial analysis
+
+pos .+ 
+[-n-2, -n+2, +n-2, +n+2, -2n-1, -2n+1, +2n-1, +2n+1]
+
+How many of these are between 1 and n*n
+
+pos .+ [-n-2, -n+2, -2n-1, -2n+1] > 0
+pos .+ [+n-2, +n+2, +2n-1, +2n+1] <= n*n
+
+count(pos .> [n+2, n-2, 2n+1, 2n-1]) + 
+count(pos .+ [n+2, n-2, 2n+1, 2n-1] .<= n*n)
+
+[n; 1]*[1 2]
+9LU!5LQ [2 1]
+U:"9LU!5LQY*GtEh+@<ss6M@+GU>~sX#.%]Ge 
+⊥
+
+pos :- [x, y]
+
+[x y] + 
+[1 2
+ 1 -2
+ 2 1
+ 2 -1
+ -1 2
+ -1 -2
+ -2 -1
+ -2 1]
+count of how many rows have both values > 0 && <= n*n
+
+U:"GGh@X[&v9LUtEZ*!tPh+tGU>~*0>ps]vGe % doesn't correctly check overreaches?
+
+%}
+
+%{
+Alternate ways to get the convolution matrix:
+
+[21;14;31;14;21]B~
+[10;17;0;17;10]B
+21BYT4Y6llhYa+~
+21BYTII&lllhYa+~
+22511061B5e~
+II^53*15731*B5e~
+HHH16 1833vYqpB5e~
+729167YqqBP5e
+11043370BP5e 
+
+t&l729167YqqBP5eZ+
+
+Note to self: program to try to shorten a number (using gamma, prime, tan?, exp?, ...?) 
+%}

@@ -1,0 +1,61 @@
+
+
+% f'(.{'iV'})(.{1,'2GqqV'})'5$h'$1'0'$2'0K$hYX2Get2LZ)P2LZ(!tg)i?&S]1Gw)
+
+%{
+
+### Explanation:
+
+The rail fence operation
+
+    F . . . A . . . Z . . . .
+      O . B . R . A . Q . X
+        O . . . B . . . U
+
+can be seen as reading r = 3 characters of input, then reading r-2 characters and 
+prefixing and suffixing that with dummy values (nulls), then reading r characters again, 
+etc., creating a new column every time:
+
+    F.A.Z.
+    OBRAQX
+    O.B.U.
+
+then reversing every second column (since the *zag* part of zigzag goes up instead of down,
+which makes a difference when r > 3), 
+then reading this matrix along the rows, and removing the dummy characters.
+
+Decipherment didn't seem to have any obvious patterns like this, but when searching around
+about this I came across [this post](https://web.archive.org/web/20150905104700/http://programmingpraxis.com/2009/03/31/rail-fence-cipher/2/), which told me that (a) this was a well known and (possibly?) published algorithm
+for rail ciphers, and (b) decipherment was a simple reuse of the same method, giving it the 
+indices of the string and getting the *indices of* those indices after encipherment, and reading
+the ciphertext at those places. 
+
+Since decipherment needs to do things by working on indices, this code does encipherment also by 
+sorting the indices of the string, and then in this case just indexing at those rearranged
+indices.
+
+%}
+
+                  % implicit first input, say 'FOOBARBAZQUX'
+    f             % indices of input string (i.e. range 1 to length(input)
+    '(.{'iV'})(.{1,'2GqqV'})'5$h
+                  % Take implicit second input, say r = 3
+                  % Create regular expression '(.{$r})(.{1,$(r-2)})'
+                  % matches r characters, then 1 to r-2 characters
+                  %  (to allow for < r-2 characters at end of string)
+    '$1'0'$2'0K$h % Create replacement expression, '$1\0$2\0'
+    YX            % Do the regex replacement
+    2Ge           % reshape the result to have r rows (padding 0s if necessary)
+    t2LZ)         % extract out the even columns of that
+    P             % flip them upside down
+    2LZ(          % assign them back into the matrix
+    !             % transpose
+    tg)           % index into the non-zero places (i.e. remove dummy 0s)
+    i?            % read third input, check if it's true or false
+    &S]           % if it's true, decipherment needed, so get the indices of the 
+                  %  rearranged indices
+    1Gw)          % index the input string at those positions
+
+
+% w?f]'(.{'iV'})(.{1,'3GqqV'})'5$h'$1'0'$2'0K$hYX3Get2LZ)P2LZ(!tg)1G?o&S2Gw)
+

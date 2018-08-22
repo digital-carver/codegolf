@@ -1,0 +1,32 @@
+
+% th3LZ)t,3:q&XdpswP]w-lw/GtY*tXdsGXdsUw-IXy*2/+GtXds*-*
+
+
+% Finding determinant
+th    % concatenate the matrix to itself sideways
+3LZ)  % chop off the last column (since the Rule of Sarrus doesn't need it)
+t     % duplicate this matrix (say S)
+,     % do this twice:
+  3:q&Xd  % get the first three diagonals of S
+  ps      % multiply each diagonal's values and add the results
+  wP      % switch and flip the matrix (to get the popposing diagonals next time)
+]w    % close loop, switch to have correct order of sums
+-     % subtract - we now have the determinant
+lw/   % invert that
+
+% Finding adjugate using Cayley–Hamilton formula
+GtY*  % A^2 term
+tXds  % trace(A^2) for term 1 of formula
+GXdsU % (trace(A))^2 for term1 of formula
+w-    % (trace(A))^2 - trace(A^2)
+IXy*  % multiply that by the identity matrix
+2/    % divide that by 2 - term 1 complete
++
+GtXds* % A*trA for term 2 of formula
+-      % subtract to get adj(A)
+
+*      % multiply by the inverse of determinant we found earlier
+       % implicit output
+
+% matrix square
+% 3:"Gt!@qYS*!s] 3$v t&v 3:K-&Xd

@@ -1,0 +1,64 @@
+
+
+
+
+% non-zero only:
+
+% &*XRXzXM
+
+&*    % multiply input by its transpose,
+      %  getting all elementwise products
+XR    % take the upper-triangular portion of that,
+      %  zeroing out repetitions and mainly self-multiplications
+Xz    % remove the zeroed out parts
+XM    % 'mode' calculation - get the most common value from that
+
+%{ zero included
+
+% &*tUQXRg)XM
+
+      % implicit input (assume input is [2,3,0,5,6])
+&*    % multiply input by its transpose,
+      %  getting all elementwise products
+      % stack: [[ 4  6  0 10 12
+                  6  9  0 15 18
+                  0  0  0  0  0
+                  10 15  0 25 30
+                  12 18  0 30 36 ]]
+tUQ   % duplicate, square each element, add 1
+      %  (shortest way I could think of to get an all-nonzero
+      %  matrix of the same size)
+XR    % take the upper-triangular portion of that, zeroing out
+      %  the positions of repetitions and self-multiplications
+      % stack: [[ 4  6  0 10 12
+                  6  9  0 15 18
+                  0  0  0  0  0
+                  10 15  0 25 30
+                  12 18  0 30 36 ],
+                  [ 0  37   1 101 145
+                  0   0   1 226 325
+                  0   0   0   1   1
+                  0   0   0   0 901
+                  0   0   0   0   0 ]]
+g     % convert that to a logical array
+      % stack: [[ 4  6  0 10 12
+                  6  9  0 15 18
+                  0  0  0  0  0
+                  10 15  0 25 30
+                  12 18  0 30 36 ],
+                  [0 1 1 1 1
+                  0 0 1 1 1
+                  0 0 0 1 1
+                  0 0 0 0 1
+                  0 0 0 0 0]
+                ]
+)     % index to get only the '1' positions from the original product matrix
+XM    % 'mode' calculation - get the most common value from that
+
+%}
+
+
+% &*XRXz6#XM
+
+
+

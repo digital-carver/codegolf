@@ -1,0 +1,24 @@
+
+O2hGq:"t0)yd0)+_Yqh]d
+
+%{
+
+              % Implicit input, say n
+O2h           % Push P = [0, 2] on the stack 
+Gq:"          % for loop: 1 to n-1
+  t0)           % Take the last element of P
+                %  Stack: [[0, 2], [2]] (in first iteration)
+  yd0)          % Take the difference between the last
+                %   two elements of P
+                %  Stack: [[0, 2], [2], [2]]
+  +             % Add those up
+                %  Stack: [[0, 2], [4]]
+  _Yq           % Get the next prime higher than that sum
+                %  Stack: [[0, 2], [5]]
+  h             % Concatenate that to the list P
+                %  Stack: [[0, 2, 5]]
+]             % End for loop
+d             % Get the differences between successive elements of
+              %   the final list P
+
+%}

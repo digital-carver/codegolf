@@ -1,0 +1,22 @@
+
+
+9es3-I:ymp*s
+
+% https://tio.run/##y00syfmf8N8ytdhY19OqMrdAq/i/S8j/aEMdBQMdBUMwgjMMsYooWEP5aCR2BFRNitmxXNFwvWj6DKjgFEyzDXA5DuEUXC7A6RSs7jDEGioGOFyA5hQA
+% Takes input in horizontal orientation as a 3x15 matrix. 
+
+9e      % reshape input to have 9 rows - each dice matrix is linearized into a column
+s       % sum each column (to get dice values)
+3-      % subtract 3 from each value, let's call this array A
+I:      % form range 1 to 3
+y       % bring a copy of array A to the top of stack
+m       % check if each of 1, 2, 3 are members of A
+        %  returns a logical array of 3 boolean values
+p       % product of the result - 0 if any were not members, 1 if they all were
+*       % multiply the original array A by this result 
+s       % sum 
+
+s3-I:ymp*s
+
+%9es3-I:ym?s}x0
+%9esK6&:ym?s15-}x0

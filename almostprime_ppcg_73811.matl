@@ -1,0 +1,17 @@
+
+
+:YqiZ^!XpSu1G)
+
+%{
+
+:               % Take first input n implicitly, make range 1 to n
+ Yq             % Get corresponding prime numbers (1st prime to nth prime)
+   i            % Take the second input k
+    Z^          % Take the k-th cartesian power of the primes list 
+                % (Getting all combinations of k primes)
+      !Xp       % Multiply each combination (2*2*2, 2*2*3, 2*2*5, ...)
+         Su     % Sort and unique
+           1G)  % Take the n-th element of the result
+
+
+%}

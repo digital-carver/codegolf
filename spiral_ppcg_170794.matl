@@ -1,0 +1,27 @@
+
+
+X>ttq*QwoEqGd*+
+
+X>        % Get the maximum of the input coordinates, say n
+ttq*      % Duplicate that and multiply by n-1
+Q         % Add 1 to that. This is the diagonal value v at layer n
+wo        % Bring the original n on top and check if it's odd (1 or 0)
+Eq        % Change 1 or 0 to 1 or -1
+Gd        % Push input (x, y) again, get y - x
+*         % Multiply by 1 or -1
+          % For odd layers, no change. For even layers, y-x becomes x-y
++         % Add that to the diagonal value v
+
+%{
+
+m * (m - 1) + 1 + (m%2*2 - 1) * (y - x)
+m * (m - 1) + 1 + (-1)^m * (y - x)
+
+By maxab_arithmetic.matl, m = ((x * (sign(y - x) - 1)) + (y * (sign(x - y) - 1)))/(-2)
+ = (x * (sign(y - x) - 1) - y * (sign(y - x) + 1))/-2
+ = (x*sign(y-x) - x - y*sign(y-x) - y)/-2
+ = ((x-y)*sign(y-x) - (x + y))/-2
+ = (-(y-x)*sign(y-x) - (x + y))/-2
+ = (x + y + abs(x-y))/2
+
+%}
