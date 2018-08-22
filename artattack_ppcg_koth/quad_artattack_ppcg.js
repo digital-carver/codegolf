@@ -70,8 +70,21 @@ function(myself, grid, bots, gameInfo) {
     dirForce[dir] = newCellForce * quadForce[dir];
   }
 
-  let bestDir = dirForce.indexOf(Math.max(...dirForce));
+  let velocity = localStorage.getItem('quad_velocity');
+  if (velocity) {
+    velocity = JSON.parse(velocity);
+    if (dirForce[velocity.dir] > 0) 
+      dirForce[velocity.dir] += velocity.magnitude;
+  }
+
+  let orderedForce = dirForce.slice().sort( (a, b) => b - a );
+  let maxPull = orderedForce.shift()
+  let bestDir = dirForce.indexOf(maxPull);
   let move = ['up', 'right', 'down', 'left'][bestDir];
+
+  let newVelocity = {'dir': bestDir, 'magnitude': maxPull - orderedForce[0]};
+
+  localStorage.setItem('quad_velocity', JSON.stringify(newVelocity));
   localStorage.setItem('quad_lastpos', JSON.stringify([myself[1], myself[2]]));
 
   return move;
